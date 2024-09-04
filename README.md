@@ -29,7 +29,23 @@ brew install tinygo
 ```
 
 
-
-
 ### 테스트
+
+unit test
+- `go test` 로 main_test.go 파일 실행.
+
+
+envoy 적용 테스트
+
+```sh
+// wasm binary를 생성한다. plugin.wasm 이라는 binary가 root directory에 생성된다.
+make build
+ 
+// envoy container를 띄운다. 빌드 완료한 wasm plugin은 volume으로 envoy container에 포함된다.
+docker-compose up
+
+// 로컬에서 요청을 보내고, docker compose의 로그를 확인한다
+curl localhost:18000 --header 'ce-specversion: 1.0' --header 'ce-source: //eventsource-1.example.com' 
+```
+
 
