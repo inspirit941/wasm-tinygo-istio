@@ -1,0 +1,12 @@
+apiVersion: extensions.istio.io/v1alpha1
+kind: WasmPlugin
+metadata:
+  name: ce-filter
+  namespace: knative-eventing
+spec:
+  selector:
+    matchLabels:
+      app: kafka-broker-receiver
+  url: oci://<your-docker-registry>/<your-org>/<your-repository>
+  phase: AUTHN
+  pluginConfig: {}
